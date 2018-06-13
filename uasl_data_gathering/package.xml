@@ -1,0 +1,22 @@
+<package>
+  <name>uasl_data_gathering</name>
+  <version>1.0.0</version>
+  <description>Tools to gather datasets for the UASL</description>
+
+  <maintainer email="h.r.courtois@cranfield.ac.uk">Hugo Courtois</maintainer>
+
+  <author>Hugo Courtois</author>
+
+  <license>TODO</license>
+
+  <!-- Dependencies which this package needs to build itself. -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Dependencies needed after this package is compiled. -->
+  <run_depend>uasl_lidar_stereo_gather</run_depend>
+  <run_depend>uasl_msg_gather</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>
