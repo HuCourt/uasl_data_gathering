@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(uasl_msg_gather)
 
 find_package(catkin REQUIRED COMPONENTS cmake_modules message_generation std_msgs geometry_msgs sensor_msgs)
-include_directories(include ${catkin_INCLUDE_DIRS})
+include_directories(${catkin_INCLUDE_DIRS})
 
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
@@ -19,7 +19,7 @@ add_message_files(
 generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)
 
 catkin_package(
-  INCLUDE_DIRS include ${EIGEN3_INCLUDE_DIR}
+  INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR}
   LIBRARIES
   CATKIN_DEPENDS message_runtime std_msgs geometry_msgs sensor_msgs
   DEPENDS Eigen
