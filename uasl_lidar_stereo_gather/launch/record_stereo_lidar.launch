@@ -1,7 +1,7 @@
 <launch>
 	<arg name="bag_name" default="default_name"/>
 	
-	<node pkg="rosbag" type="record" name="rosbag_record_lidar_stereo" args="record -o ./$(arg bag_name) tf /$(arg output_topic)">
+	<node pkg="rosbag" type="record" name="rosbag_record_lidar_stereo" args="record -o ./$(arg bag_name) tf sync_data_out">
 		<rosparam command="load" file="$(find uasl_lidar_stereo_gather)/config/params.yaml"/>		
 	</node>
 	

@@ -33,7 +33,7 @@ Get_lidar_stereo_node::Get_lidar_stereo_node()
 	#ifdef UASL_USE_CAMERA
 	out_pub = nh.advertise<uasl_msg_gather::Pointcloud2_stereo>(output_topic,1);
 	acq.add_camera<cam::bluefox>(cam_1_id);
-    acq.add_camera<cam::bluefox>(cam_2_id);
+    	acq.add_camera<cam::bluefox>(cam_2_id);
     acq.start_acq();
     #else
     out_pub = nh.advertise<sensor_msgs::Pointcloud2>(output_topic, 1);
@@ -45,7 +45,7 @@ void Get_lidar_stereo_node::laser_callback(const sensor_msgs::PointCloud2::Const
 	//Callback of the LIDAR. The images are acquired here as well.
 	#ifdef UASL_USE_CAMERA
 	std::vector<cv::Mat> images;
-	if(!acq.get_images(images))
+	if(acq.get_images(images) > 0)
 	{
 		if(images.size() != 2) ROS_ERROR("The number of retrieved images is different from 2.");
 		else

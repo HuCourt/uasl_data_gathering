@@ -1,4 +1,4 @@
 laser_topic: "velodyne_points"
 output_topic: "sync_data_out"
-cam_1_id: "cam_1"
-cam_2_id: "cam_2"
+cam_1_id: "30400333"
+cam_2_id: "30400337"
