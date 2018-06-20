@@ -1,0 +1,17 @@
+<launch>
+
+	<arg name="lidar_frame_id" default="lidar" /> <!-- This has to match the value inside the config file -->
+
+	<include file="$(find mocap_optitrack)/launch/mocap.launch">
+		<arg name="mocap_config_file" value="$(find uasl_lidar_stereo_gather)/config/mocap.yaml" />	
+	</include>
+	
+	<include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch">
+		<arg name="port" type="string" value="2369" />
+		<arg name="frame_id" type="string" value="$(arg lidar_frame_id)" />
+	</include>
+	
+	<node name="get_lidar_stereo_separated_node" pkg="uasl_lidar_stereo_gather" type="get_lidar_stereo_separated_node" output="screen">
+		<rosparam command="load" file="$(find uasl_lidar_stereo_gather)/config/params.yaml"/>
+	</node>
+</launch> 

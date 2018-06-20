@@ -1,5 +1,4 @@
 #include "get_lidar_stereo_node.hpp"
-#include "conversion_ros_eigen.hpp"
 
 #include "uasl_msg_gather/Pointcloud2_stereo.h"
 
@@ -20,7 +19,7 @@ Get_lidar_stereo_node::Get_lidar_stereo_node()
 {
 	ros::NodeHandle pnh("~");
 	
-	std::string laser_topic, odometry_topic, output_topic, cam_1_id, cam_2_id; 
+	std::string laser_topic, output_topic, cam_1_id, cam_2_id; 
 	pnh.getParam("laser_topic", laser_topic);
 	pnh.getParam("cam_1_id", cam_1_id);
 	pnh.getParam("cam_2_id", cam_2_id);
@@ -86,7 +85,7 @@ void Get_lidar_stereo_node::laser_callback(const sensor_msgs::PointCloud2::Const
 
 int main(int argc, char * argv[])
 {
-	ros::init(argc, argv, "get_data_node");
+	ros::init(argc, argv, "get_lidar_stereo_node");
 	
 	datag::Get_lidar_stereo_node node;
 	

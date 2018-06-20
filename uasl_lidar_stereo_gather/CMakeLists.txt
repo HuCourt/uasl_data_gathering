@@ -33,6 +33,9 @@ include_directories(
 add_executable(get_lidar_stereo_node src/get_lidar_stereo_node.cpp)
 target_link_libraries(get_lidar_stereo_node ${catkin_LIBRARIES})
 
+add_executable(get_lidar_stereo_node_separated src/get_lidar_stereo_node_separated.cpp)
+target_link_libraries(get_lidar_stereo_node_separated ${catkin_LIBRARIES})
+
 install(
   DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
