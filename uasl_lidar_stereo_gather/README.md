@@ -11,6 +11,7 @@ This package aims at facilitating data gathering using stereo cameras, LIDAR, an
 
 ## Usage
 ### How to record stereo, LIDAR, and optitrack data :
-- Make sure a roscore is running. Run the launch file named get_lidar_stereo.launch. As parameters, you should specify cam_1_id and cam_2_id as parameters. To record, use the bag file record_stereo_lidar.launch and pass it the name of the bag to be created : bag_name.
+- Make sure a roscore is running. 
+- If you want to get a separated output for images and lidar data (so 3 different topics), run the launch file named get_lidar_stereo_separated.launch. Else, the launch file get_lidar_stereo.launch combines all 3 into a single message. As parameters, you should specify cam_1_id and cam_2_id. The parameters can be defined in config/params.yaml.
 
 
