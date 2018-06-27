@@ -11,6 +11,9 @@ find_package(OpenCV REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  tf2_ros
+  tf2_msgs
+  rosbag
   sensor_msgs 
   uasl_image_acquisition
   uasl_msg_gather
@@ -20,7 +23,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include ${OpenCV_INCLUDE_DIRS}
   LIBRARIES get_data_base
-  CATKIN_DEPENDS roscpp sensor_msgs uasl_image_acquisition uasl_msg_gather cv_bridge
+  CATKIN_DEPENDS roscpp tf2_ros tf2_msgs rosbag sensor_msgs uasl_image_acquisition uasl_msg_gather cv_bridge
   DEPENDS OpenCV
 )
 
@@ -37,6 +40,9 @@ target_link_libraries(get_lidar_stereo_node get_data_base)
 
 add_executable(get_lidar_stereo_node_separated src/get_lidar_stereo_node_separated.cpp)
 target_link_libraries(get_lidar_stereo_node_separated get_data_base)
+
+add_executable(convert_data_node src/convert_data_node.cpp)
+target_link_libraries(convert_data_node ${catkin_LIBRARIES})
 
 install(
   DIRECTORY include/${PROJECT_NAME}/

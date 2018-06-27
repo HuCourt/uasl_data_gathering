@@ -1,0 +1,24 @@
+<launch>
+	<arg name="action_in" default="bag" />
+	<arg name="action_out" default="bag" />
+	
+	<arg name="bag_input" default="default_bag_input.bag" />
+	<arg name="bag_output" default="default_bag_output.bag" />
+	
+	<arg name="input_merged_data_topic" default="default_input_merged_data_topic" />
+	
+	<arg name="output_img_1_topic" default="default_output_img_1_topic" />
+	<arg name="output_img_2_topic" default="default_output_img_2_topic" />
+	<arg name="output_pc_topic" default="default_output_pc_topic" />
+	
+	<node name="convert_data_node" pkg="uasl_lidar_stereo_gather" type="convert_data_node" output="screen">
+		<param name="action_in" value="$(arg action_in)" />
+		<param name="action_out" value="$(arg action_out)" />
+		<param name="bag_input" value="$(arg bag_input)" />
+		<param name="bag_output" value="$(arg bag_output)" />
+		<param name="input_merged_data_topic" value="$(arg input_merged_data_topic)" />
+		<param name="output_img_1_topic" value="$(arg output_img_1_topic)" />
+		<param name="output_img_2_topic" value="$(arg output_img_2_topic)" />
+		<param name="output_pc_topic" value="$(arg output_pc_topic)" />
+	</node>
+</launch> 

@@ -12,7 +12,7 @@
 #include <sensor_msgs/Image.h>
 #include <ros/ros.h>
 
-//#define UASL_USE_CAMERA//If this is defined, we use the cameras, else we don't
+#define UASL_USE_CAMERA//If this is defined, we use the cameras, else we don't
 
 #ifdef UASL_USE_CAMERA
 #include "uasl_image_acquisition/acquisition.hpp"
