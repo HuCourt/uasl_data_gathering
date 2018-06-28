@@ -39,7 +39,7 @@ class Convert_data
 	tf2_ros::TransformBroadcaster tf_br;
 	
 	void input_callback(const uasl_msg_gather::Pointcloud2_stereo::ConstPtr& pointcloud_msg);
-	void input_tf(const tf2_msgs::TFMessage::ConstPtr& tf_msg);
+	void input_tf(const tf2_msgs::TFMessage::ConstPtr& tf_msg, const ros::Time& time);
 };
 
 } //end of datag namespace

@@ -79,7 +79,7 @@ Convert_data::Convert_data()
     		tf2_msgs::TFMessage::ConstPtr tf_data = m.instantiate<tf2_msgs::TFMessage>();
     		if(tf_data != nullptr)
     		{
-    			input_tf(tf_data);
+    			input_tf(tf_data,m.getTime());
     		}
     	}
     	
@@ -89,18 +89,12 @@ Convert_data::Convert_data()
 	
 }
 
-void Convert_data::input_tf(const tf2_msgs::TFMessage::ConstPtr& tf_msg)
+void Convert_data::input_tf(const tf2_msgs::TFMessage::ConstPtr& tf_msg, const ros::Time& time)
 {
-	for(const geometry_msgs::TransformStamped& transform : tf_msg->transforms)
+	if(action_in == "bag")
 	{
-		if(action_in == "bag" && action_out == "topic")
-		{
-			tf_br.sendTransform(transform);		
-		}
-		else if(action_out == "bag")
-		{
-			bag_output.write("tf",transform.header.stamp,transform);
-		}
+		if(action_out == "topic") tf_br.sendTransform(tf_msg->transforms);
+		else if(action_out == "bag") bag_output.write("tf",time,*tf_msg);		
 	}
 }
 
