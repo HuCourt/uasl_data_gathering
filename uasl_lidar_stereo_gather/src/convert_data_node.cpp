@@ -91,11 +91,11 @@ Convert_data::Convert_data()
 
 void Convert_data::input_tf(const tf2_msgs::TFMessage::ConstPtr& tf_msg, const ros::Time& time)
 {
-	if(action_in == "bag")
+	if(action_in == "bag" && action_out == "topic")
 	{
-		if(action_out == "topic") tf_br.sendTransform(tf_msg->transforms);
-		else if(action_out == "bag") bag_output.write("tf",time,*tf_msg);		
+		tf_br.sendTransform(tf_msg->transforms);		
 	}
+	else if(action_out == "bag") bag_output.write("tf",time,*tf_msg);
 }
 
 void Convert_data::input_callback(const uasl_msg_gather::Pointcloud2_stereo::ConstPtr& pointcloud_msg)
